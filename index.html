@@ -12,8 +12,8 @@
 
       body {
         font-family: 'Honk', sans-serif;
-        background-color: #121212; /* Dark background color */
-        color: #e0e0e0; /* Light gray text color */
+        background: linear-gradient(135deg, #1f1f1f, #3c3c3c); /* Gradient background */
+        color: #ffffff; /* White text color for contrast */
         margin: 0;
         padding: 0;
         text-align: center;
@@ -21,7 +21,7 @@
       }
 
       nav {
-        background-color: #1f1f1f; /* Dark background for the navigation bar */
+        background-color: #ff5722; /* Vibrant orange background for the navigation bar */
         padding: 10px;
       }
 
@@ -38,52 +38,58 @@
       }
 
       nav ul li a {
-        color: #e0e0e0; /* Light text color */
+        color: #ffffff; /* White text color for links */
         text-decoration: none;
         font-size: 18px;
+        font-weight: bold;
       }
 
       nav ul li a:hover {
-        color: #ff5722; /* Highlight color on hover */
+        color: #ffeb3b; /* Bright yellow on hover */
       }
 
       .hero {
-        background-image: url('your-image-url.jpg'); /* Replace with your image URL */
+        background: linear-gradient(135deg, #00bcd4, #3f51b5); /* Gradient background for hero section */
         background-size: cover;
         background-position: center;
         height: 300px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
+        color: #ffffff;
         text-align: center;
         margin-bottom: 20px;
       }
 
       .hero h1 {
-        font-size: 3em;
+        font-size: 4em;
         margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow for better readability */
       }
 
       section {
         padding: 20px;
-        background-color: #2c2c2c; /* Darker background for the section */
-        margin-bottom: 20px; /* Space between sections */
+        background-color: #4caf50; /* Bright green background for the section */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        margin-bottom: 20px;
       }
 
       section h2 {
-        color: #4caf50; /* Green color for subheading */
+        color: #ffffff; /* White text color for subheading */
         margin: 0;
+        font-size: 2em;
       }
 
       section p {
-        color: #b0bec5; /* Light blue-gray color for text */
+        color: #ffffff; /* White text color */
         font-size: 16px;
       }
 
       section a {
-        color: #1e90ff; /* Bright blue color for links */
+        color: #ffeb3b; /* Bright yellow color for links */
         text-decoration: none;
+        font-weight: bold;
       }
 
       section a:hover {
@@ -92,8 +98,8 @@
 
       .cta-button, .description-button, .owner-button, .mods-button {
         cursor: pointer;
-        background-color: #4caf50; /* Green background for button */
-        color: #fff;
+        background: linear-gradient(135deg, #ff5722, #e91e63); /* Gradient background for buttons */
+        color: #ffffff;
         border: none;
         padding: 10px 20px;
         font-size: 18px;
@@ -102,18 +108,19 @@
         display: inline-flex;
         align-items: center;
         position: relative;
-        z-index: 1; /* Ensure button is clickable */
-        text-transform: uppercase; /* Capitalize button text */
+        z-index: 1;
+        text-transform: uppercase;
+        transition: background 0.3s ease; /* Smooth transition for hover effect */
       }
 
       .cta-button:hover, .description-button:hover, .owner-button:hover, .mods-button:hover {
-        background-color: #388e3c; /* Darker green on hover */
+        background: linear-gradient(135deg, #e91e63, #ff5722); /* Inverted gradient on hover */
       }
 
       .arrow-down {
         display: inline-block;
         margin-left: 10px;
-        border: solid #fff;
+        border: solid #ffffff;
         border-width: 0 3px 3px 0;
         padding: 3px;
         transform: rotate(45deg);
@@ -125,12 +132,14 @@
       }
 
       .description, .owner-info, .mods-info {
-        background-color: #333; /* Slightly lighter background for description */
+        background: linear-gradient(135deg, #2196f3, #03a9f4); /* Gradient background for sections */
         padding: 20px;
         margin: 0 auto;
         max-width: 800px;
-        text-align: left; /* Align text to the left for better readability */
-        display: none; /* Hidden by default */
+        text-align: left;
+        display: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
     </style>
 </head>
