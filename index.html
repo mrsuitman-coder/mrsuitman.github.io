@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-10">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games</title>
     <style>
-
       @font-face {
         font-family: 'Honk';
         src: url('Arial') format('truetype');
@@ -14,21 +13,46 @@
       body {
         font-family: 'Honk', sans-serif;
         background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      header, section, footer {
+        padding: 20px;
+      }
+
+      header {
+        background-color: #333;
+      }
+
+      footer {
+        background-color: #333;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      h1, h2, p {
+        margin: 0;
+      }
+
+      p {
+        font-size: 16px;
       }
     </style>
 </head>
 <body>
     <header>
-        <h1 style="color: white;">Games</h2>
+        <h1>Games</h1>
     </header>
     <section id="home">
-        <h2 style="color:  white">Welcome to Our Website!</h1>
-        <p style="color: white; font-size: 16px;">This website was made for the delta server
-       join here >>>>> https://discord.gg/kxjqMP5nmm
-    </p>
+        <h2>Welcome to Our Website!</h2>
+        <p>This website was made for the delta server. Join here >>>>> <a href="https://discord.gg/kxjqMP5nmm" style="color: #1E90FF;">https://discord.gg/kxjqMP5nmm</a></p>
     </section>
-    <footer></p>
-      <p style="color: white;">&copy; 2024 Servers. All rights reserved.</p> 
+    <footer>
+        <p>&copy; 2024 Servers. All rights reserved.</p>
     </footer>
 </body>
-</html> 
+</html>
