@@ -17,6 +17,7 @@
         margin: 0;
         padding: 0;
         text-align: center;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
       }
 
       nav {
@@ -135,6 +136,8 @@
         font-size: 18px;
         border-radius: 5px;
         margin-top: 10px;
+        display: inline-flex;
+        align-items: center;
       }
 
       .description-button:hover {
@@ -175,11 +178,11 @@
         <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
     </section>
 
-    <section class="description">
+    <button class="description-button" onclick="toggleDescription()">Description <span class="arrow-down" id="arrow"></span></button>
+    <div class="description" id="description">
         <h2>Description:</h2>
         <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
-    </section>
-    <button class="description-button" onclick="toggleDescription()">Description <span class="arrow-down" id="arrow"></span></button>
+    </div>
 
     <footer>
         <p>&copy; 2024 Servers. All rights reserved.</p>
@@ -187,7 +190,7 @@
 
     <script>
       function toggleDescription() {
-        const desc = document.querySelector('.description');
+        const desc = document.getElementById('description');
         const arrow = document.getElementById('arrow');
         if (desc.style.display === 'block') {
           desc.style.display = 'none';
