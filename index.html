@@ -7,7 +7,7 @@
     <style>
       @font-face {
         font-family: 'Honk';
-        src: url('Arial') format('truetype');
+        src: url('your-font-url.woff2') format('woff2'); /* Replace with your custom font URL */
       }
 
       body {
@@ -90,44 +90,7 @@
         text-decoration: underline; /* Underline on hover */
       }
 
-      .cta-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #ff5722; /* Vibrant orange button */
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 16px;
-        margin-top: 20px;
-      }
-
-      .cta-button:hover {
-        background-color: #e64a19; /* Darker shade on hover */
-      }
-
-      footer {
-        background-color: #1f1f1f; /* Same background color as header */
-        padding: 10px;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
-
-      footer p {
-        color: #e0e0e0; /* Light gray color for footer text */
-        margin: 0;
-      }
-
-      .description {
-        background-color: #333; /* Slightly lighter background for description */
-        padding: 20px;
-        margin: 0 auto;
-        max-width: 800px;
-        text-align: left; /* Align text to the left for better readability */
-        display: none; /* Hidden by default */
-      }
-
-      .description-button {
+      .cta-button, .description-button, .owner-button, .mods-button {
         cursor: pointer;
         background-color: #4caf50; /* Green background for button */
         color: #fff;
@@ -140,9 +103,10 @@
         align-items: center;
         position: relative;
         z-index: 1; /* Ensure button is clickable */
+        text-transform: uppercase; /* Capitalize button text */
       }
 
-      .description-button:hover {
+      .cta-button:hover, .description-button:hover, .owner-button:hover, .mods-button:hover {
         background-color: #388e3c; /* Darker green on hover */
       }
 
@@ -159,6 +123,15 @@
       .arrow-down.open {
         transform: rotate(-135deg);
       }
+
+      .description, .owner-info, .mods-info {
+        background-color: #333; /* Slightly lighter background for description */
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+        text-align: left; /* Align text to the left for better readability */
+        display: none; /* Hidden by default */
+      }
     </style>
 </head>
 <body>
@@ -166,7 +139,8 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#description">Description</a></li>
-            <!-- Add more navigation items as needed -->
+            <li><a href="#owner">The Owner</a></li>
+            <li><a href="#mods">Mods/Trial Mods</a></li>
         </ul>
     </nav>
 
@@ -180,10 +154,22 @@
         <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
     </section>
 
-    <button class="description-button" onclick="toggleDescription()">Description <span class="arrow-down" id="arrow"></span></button>
+    <button class="description-button" onclick="toggleSection('description')">Description <span class="arrow-down" id="description-arrow"></span></button>
     <div class="description" id="description">
         <h2>Description:</h2>
         <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
+    </div>
+
+    <button class="owner-button" onclick="toggleSection('owner-info')">The Owner <span class="arrow-down" id="owner-arrow"></span></button>
+    <div class="owner-info" id="owner-info">
+        <h2>The Owner:</h2>
+        <p>Meet the owner of the server. Delta7 is passionate about creating a great community. His Reddit: <a href="https://www.reddit.com/user/delta7r/">https://www.reddit.com/user/delta7r/</a>, Twitter: <a href="https://x.com/delta7tw?mx=2">https://x.com/delta7tw?mx=2</a>, YouTube: <a href="https://www.youtube.com/channel/UCkcmYv0UXc7HeFzw2qk4z9g">https://www.youtube.com/channel/UCkcmYv0UXc7HeFzw2qk4z9g</a>, Twitch: <a href="https://www.twitch.tv/delta7twitch">https://www.twitch.tv/delta7twitch</a></p>
+    </div>
+
+    <button class="mods-button" onclick="toggleSection('mods-info')">Mods/Trial Mods <span class="arrow-down" id="mods-arrow"></span></button>
+    <div class="mods-info" id="mods-info">
+        <h2>Mods/Trial Mods:</h2>
+        <p>Our mods and trial mods are here to help make the server a better place. [utcsun, yadisdagoat, mr_pasta, slemthepropog, k0n1ngf1l1p, history333, dragonpro748]</p>
     </div>
 
     <footer>
@@ -191,16 +177,25 @@
     </footer>
 
     <script>
-      function toggleDescription() {
-        const desc = document.getElementById('description');
-        const arrow = document.getElementById('arrow');
-        if (desc.style.display === 'block') {
-          desc.style.display = 'none';
-          arrow.classList.remove('open');
-        } else {
-          desc.style.display = 'block';
-          arrow.classList.add('open');
-        }
+      function toggleSection(id) {
+        const sections = document.querySelectorAll('.description, .owner-info, .mods-info');
+        const arrows = document.querySelectorAll('.arrow-down');
+        
+        sections.forEach(section => {
+          if (section.id === id) {
+            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+            const arrow = document.getElementById(`${id}-arrow`);
+            arrow.classList.toggle('open');
+          } else {
+            section.style.display = 'none';
+          }
+        });
+
+        arrows.forEach(arrow => {
+          if (arrow.id !== `${id}-arrow`) {
+            arrow.classList.remove('open');
+          }
+        });
       }
     </script>
 </body>
