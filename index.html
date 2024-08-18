@@ -123,6 +123,36 @@
         margin: 0 auto;
         max-width: 800px;
         text-align: left; /* Align text to the left for better readability */
+        display: none; /* Hidden by default */
+      }
+
+      .description-button {
+        cursor: pointer;
+        background-color: #4caf50; /* Green background for button */
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      .description-button:hover {
+        background-color: #388e3c; /* Darker green on hover */
+      }
+
+      .arrow-down {
+        display: inline-block;
+        margin-left: 10px;
+        border: solid #fff;
+        border-width: 0 3px 3px 0;
+        padding: 3px;
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+      }
+
+      .arrow-down.open {
+        transform: rotate(-135deg);
       }
     </style>
 </head>
@@ -149,9 +179,24 @@
         <h2>Description:</h2>
         <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
     </section>
+    <button class="description-button" onclick="toggleDescription()">Description <span class="arrow-down" id="arrow"></span></button>
 
     <footer>
         <p>&copy; 2024 Servers. All rights reserved.</p>
     </footer>
+
+    <script>
+      function toggleDescription() {
+        const desc = document.querySelector('.description');
+        const arrow = document.getElementById('arrow');
+        if (desc.style.display === 'block') {
+          desc.style.display = 'none';
+          arrow.classList.remove('open');
+        } else {
+          desc.style.display = 'block';
+          arrow.classList.add('open');
+        }
+      }
+    </script>
 </body>
 </html>
