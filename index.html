@@ -190,7 +190,7 @@
           } else {
             section.style.display = 'none';
             const arrow = document.getElementById(`${section.id}-arrow`);
-            arrow.classList.remove('open');
+            if (arrow) arrow.classList.remove('open');
           }
         });
       }
