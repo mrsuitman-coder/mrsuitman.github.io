@@ -180,19 +180,16 @@
       function toggleSection(id) {
         const sections = document.querySelectorAll('.description, .owner-info, .mods-info');
         const arrows = document.querySelectorAll('.arrow-down');
-        
+
         sections.forEach(section => {
           if (section.id === id) {
-            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+            const isCurrentlyVisible = section.style.display === 'block';
+            section.style.display = isCurrentlyVisible ? 'none' : 'block';
             const arrow = document.getElementById(`${id}-arrow`);
-            arrow.classList.toggle('open');
+            arrow.classList.toggle('open', !isCurrentlyVisible);
           } else {
             section.style.display = 'none';
-          }
-        });
-
-        arrows.forEach(arrow => {
-          if (arrow.id !== `${id}-arrow`) {
+            const arrow = document.getElementById(`${section.id}-arrow`);
             arrow.classList.remove('open');
           }
         });
