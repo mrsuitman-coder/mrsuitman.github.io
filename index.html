@@ -96,7 +96,16 @@
         text-decoration: underline; /* Underline on hover */
       }
 
-      .cta-button, .description-button, .owner-button, .mods-button {
+      .side-buttons {
+        position: fixed;
+        top: 20px; /* Adjust as needed */
+        right: 20px; /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Space between buttons */
+      }
+
+      .side-button {
         cursor: pointer;
         background: linear-gradient(135deg, #ff5722, #e91e63); /* Gradient background for buttons */
         color: #ffffff;
@@ -104,16 +113,13 @@
         padding: 10px 20px;
         font-size: 18px;
         border-radius: 5px;
-        margin-top: 10px;
-        display: inline-flex;
-        align-items: center;
-        position: relative;
-        z-index: 1;
         text-transform: uppercase;
         transition: background 0.3s ease; /* Smooth transition for hover effect */
+        display: flex;
+        align-items: center;
       }
 
-      .cta-button:hover, .description-button:hover, .owner-button:hover, .mods-button:hover {
+      .side-button:hover {
         background: linear-gradient(135deg, #e91e63, #ff5722); /* Inverted gradient on hover */
       }
 
@@ -163,19 +169,22 @@
         <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
     </section>
 
-    <button class="description-button" onclick="toggleSection('description')">Description <span class="arrow-down" id="description-arrow"></span></button>
+    <div class="side-buttons">
+        <button class="side-button" onclick="toggleSection('description')">Description <span class="arrow-down" id="description-arrow"></span></button>
+        <button class="side-button" onclick="toggleSection('owner-info')">The Owner <span class="arrow-down" id="owner-arrow"></span></button>
+        <button class="side-button" onclick="toggleSection('mods-info')">Mods/Trial Mods <span class="arrow-down" id="mods-arrow"></span></button>
+    </div>
+
     <div class="description" id="description">
         <h2>Description:</h2>
         <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
     </div>
 
-    <button class="owner-button" onclick="toggleSection('owner-info')">The Owner <span class="arrow-down" id="owner-arrow"></span></button>
     <div class="owner-info" id="owner-info">
         <h2>The Owner:</h2>
         <p>Meet the owner of the server. Delta7 is passionate about creating a great community. His Reddit: <a href="https://www.reddit.com/user/delta7r/">https://www.reddit.com/user/delta7r/</a>, Twitter: <a href="https://x.com/delta7tw?mx=2">https://x.com/delta7tw?mx=2</a>, YouTube: <a href="https://www.youtube.com/@delttaa7">https://www.youtube.com/@delttaa7</a>, Twitch: <a href="https://www.twitch.tv/delta7twitch">https://www.twitch.tv/delta7twitch</a></p>
     </div>
 
-    <button class="mods-button" onclick="toggleSection('mods-info')">Mods/Trial Mods <span class="arrow-down" id="mods-arrow"></span></button>
     <div class="mods-info" id="mods-info">
         <h2>Mods/Trial Mods:</h2>
         <p>Our mods and trial mods are here to help make the server a better place. utcsun, yadisdagoat, mr_pasta, slemthepropog, k0n1ngf1l1p, history333, dragonpro748</p>
