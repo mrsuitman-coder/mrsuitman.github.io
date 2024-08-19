@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,61 +16,36 @@
         color: #ffffff; /* White text color for contrast */
         margin: 0;
         padding: 0;
-        display: flex;
+        text-align: center;
         overflow-x: hidden; /* Prevent horizontal scrolling */
       }
 
-      .sidebar {
-        width: 250px; /* Width of the sidebar */
-        background-color: #ff5722; /* Vibrant orange background for the sidebar */
+      nav {
+        background-color: #ff5722; /* Vibrant orange background for the navigation bar */
         padding: 10px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh; /* Full height of the viewport */
-        display: flex;
-        flex-direction: column;
-        gap: 10px; /* Space between buttons */
-        z-index: 1;
       }
 
-      .sidebar-button {
-        cursor: pointer;
-        background: linear-gradient(135deg, #ff5722, #e91e63); /* Gradient background for buttons */
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: #ffffff; /* White text color for links */
+        text-decoration: none;
         font-size: 18px;
-        border-radius: 5px;
-        text-transform: uppercase;
-        transition: background 0.3s ease; /* Smooth transition for hover effect */
-        display: flex;
-        align-items: center;
+        font-weight: bold;
       }
 
-      .sidebar-button:hover {
-        background: linear-gradient(135deg, #e91e63, #ff5722); /* Inverted gradient on hover */
-      }
-
-      .arrow-down {
-        display: inline-block;
-        margin-left: 10px;
-        border: solid #ffffff;
-        border-width: 0 3px 3px 0;
-        padding: 3px;
-        transform: rotate(45deg);
-        transition: transform 0.3s ease;
-      }
-
-      .arrow-down.open {
-        transform: rotate(-135deg);
-      }
-
-      .main-content {
-        margin-left: 270px; /* Space for the sidebar */
-        padding: 20px;
-        width: calc(100% - 270px); /* Full width minus sidebar */
-        box-sizing: border-box;
+      nav ul li a:hover {
+        color: #ffeb3b; /* Bright yellow on hover */
       }
 
       .hero {
@@ -92,69 +67,118 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow for better readability */
       }
 
-      .section-content {
-        display: none;
+      section {
+        padding: 20px;
+        background-color: #4caf50; /* Bright green background for the section */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        margin-bottom: 20px;
+      }
+
+      section h2 {
+        color: #ffffff; /* White text color for subheading */
+        margin: 0;
+        font-size: 2em;
+      }
+
+      section p {
+        color: #ffffff; /* White text color */
+        font-size: 16px;
+      }
+
+      section a {
+        color: #ffeb3b; /* Bright yellow color for links */
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      section a:hover {
+        text-decoration: underline; /* Underline on hover */
+      }
+
+      .cta-button, .description-button, .owner-button, .mods-button {
+        cursor: pointer;
+        background: linear-gradient(135deg, #ff5722, #e91e63); /* Gradient background for buttons */
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        margin-top: 10px;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        text-transform: uppercase;
+        transition: background 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      .cta-button:hover, .description-button:hover, .owner-button:hover, .mods-button:hover {
+        background: linear-gradient(135deg, #e91e63, #ff5722); /* Inverted gradient on hover */
+      }
+
+      .arrow-down {
+        display: inline-block;
+        margin-left: 10px;
+        border: solid #ffffff;
+        border-width: 0 3px 3px 0;
+        padding: 3px;
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+      }
+
+      .arrow-down.open {
+        transform: rotate(-135deg);
+      }
+
+      .description, .owner-info, .mods-info {
         background: linear-gradient(135deg, #2196f3, #03a9f4); /* Gradient background for sections */
         padding: 20px;
-        margin-top: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+        text-align: left;
+        display: none;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        position: absolute;
-        left: 270px; /* Position to the right of the sidebar */
-        top: 10px; /* Start from the top */
-        width: calc(100% - 270px); /* Full width minus sidebar */
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.3s ease, opacity 0.3s ease;
-      }
-
-      .section-content.open {
-        display: block;
-        max-height: 500px; /* Adjust as needed */
-        opacity: 1;
-      }
-
-      footer {
-        text-align: center;
-        padding: 10px;
-        background-color: #333;
-        color: #fff;
       }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <button class="sidebar-button" onclick="toggleSection('description')">Description <span class="arrow-down" id="description-arrow"></span></button>
-        <button class="sidebar-button" onclick="toggleSection('owner-info')">The Owner <span class="arrow-down" id="owner-arrow"></span></button>
-        <button class="sidebar-button" onclick="toggleSection('mods-info')">Mods/Trial Mods <span class="arrow-down" id="mods-arrow"></span></button>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#owner">The Owner</a></li>
+            <li><a href="#mods">Mods/Trial Mods</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to Our Server!</h1>
     </div>
 
-    <div class="main-content">
-        <div class="hero">
-            <h1>Welcome to Our Server!</h1>
-        </div>
+    <section id="home">
+        <h2>Welcome to Our Website!</h2>
+        <p>This website was made for the delta server.</p>
+        <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
+    </section>
 
-        <section id="home">
-            <h2>Welcome to Our Website!</h2>
-            <p>This website was made for the delta server.</p>
-            <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
-        </section>
+    <button class="description-button" onclick="toggleSection('description')">Description <span class="arrow-down" id="description-arrow"></span></button>
+    <div class="description" id="description">
+        <h2>Description:</h2>
+        <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
+    </div>
 
-        <div class="section-content" id="description">
-            <h2>Description:</h2>
-            <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
-        </div>
+    <button class="owner-button" onclick="toggleSection('owner-info')">The Owner <span class="arrow-down" id="owner-arrow"></span></button>
+    <div class="owner-info" id="owner-info">
+        <h2>The Owner:</h2>
+        <p>Meet the owner of the server. Delta7 is passionate about creating a great community. His Reddit: <a href="https://www.reddit.com/user/delta7r/">https://www.reddit.com/user/delta7r/</a>, Twitter: <a href="https://x.com/delta7tw?mx=2">https://x.com/delta7tw?mx=2</a>, YouTube: <a href="https://www.youtube.com/@delttaa7">https://www.youtube.com/@delttaa7</a>, Twitch: <a href="https://www.twitch.tv/delta7twitch">https://www.twitch.tv/delta7twitch</a></p>
+    </div>
 
-        <div class="section-content" id="owner-info">
-            <h2>The Owner:</h2>
-            <p>Meet the owner of the server. Delta7 is passionate about creating a great community. His Reddit: <a href="https://www.reddit.com/user/delta7r/">https://www.reddit.com/user/delta7r/</a>, Twitter: <a href="https://x.com/delta7tw?mx=2">https://x.com/delta7tw?mx=2</a>, YouTube: <a href="https://www.youtube.com/@delttaa7">https://www.youtube.com/@delttaa7</a>, Twitch: <a href="https://www.twitch.tv/delta7twitch">https://www.twitch.tv/delta7twitch</a></p>
-        </div>
-
-        <div class="section-content" id="mods-info">
-            <h2>Mods/Trial Mods:</h2>
-            <p>Our mods and trial mods are here to help make the server a better place. utcsun, yadisdagoat, mr_pasta, slemthepropog, k0n1ngf1l1p, history333, dragonpro748</p>
-        </div>
+    <button class="mods-button" onclick="toggleSection('mods-info')">Mods/Trial Mods <span class="arrow-down" id="mods-arrow"></span></button>
+    <div class="mods-info" id="mods-info">
+        <h2>Mods/Trial Mods:</h2>
+        <p>Our mods and trial mods are here to help make the server a better place. utcsun, yadisdagoat, mr_pasta, slemthepropog, k0n1ngf1l1p, history333, dragonpro748</p>
     </div>
 
     <footer>
@@ -163,18 +187,18 @@
 
     <script>
       function toggleSection(id) {
-        const sections = document.querySelectorAll('.section-content');
+        const sections = document.querySelectorAll('.description, .owner-info, .mods-info');
         const arrows = document.querySelectorAll('.arrow-down');
 
         sections.forEach(section => {
           if (section.id === id) {
-            const isCurrentlyVisible = section.classList.contains('open');
-            section.classList.toggle('open', !isCurrentlyVisible);
-            const arrow = document.getElementById(`${id}-arrow`);
+            const isCurrentlyVisible = section.style.display === 'block';
+            section.style.display = isCurrentlyVisible ? 'none' : 'block';
+            const arrow = document.getElementById(${id}-arrow);
             arrow.classList.toggle('open', !isCurrentlyVisible);
           } else {
-            section.classList.remove('open');
-            const arrow = document.getElementById(`${section.id}-arrow`);
+            section.style.display = 'none';
+            const arrow = document.getElementById(${section.id}-arrow);
             if (arrow) arrow.classList.remove('open');
           }
         });
