@@ -96,21 +96,6 @@
         text-decoration: underline; /* Underline on hover */
       }
 
-      .description, .owner-info, .mods-info {
-        background: linear-gradient(135deg, #2196f3, #03a9f4); /* Gradient background for sections */
-        padding: 20px;
-        margin: 0 auto;
-        max-width: 800px;
-        text-align: left;
-        display: none;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .description.show, .owner-info.show, .mods-info.show {
-        display: block;
-      }
-
       footer {
         background: #333; /* Dark background for footer */
         padding: 10px;
@@ -139,20 +124,20 @@
         <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
     </section>
 
-    <div class="description" id="description">
+    <section id="description">
         <h2>Description:</h2>
         <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
-    </div>
+    </section>
 
-    <div class="owner-info" id="owner">
+    <section id="owner">
         <h2>The Owner:</h2>
         <p>Meet the owner of the server. Delta7 is passionate about creating a great community. His Reddit: <a href="https://www.reddit.com/user/delta7r/">https://www.reddit.com/user/delta7r/</a>, Twitter: <a href="https://x.com/delta7tw?mx=2">https://x.com/delta7tw?mx=2</a>, YouTube: <a href="https://www.youtube.com/@delttaa7">https://www.youtube.com/@delttaa7</a>, Twitch: <a href="https://www.twitch.tv/delta7twitch">https://www.twitch.tv/delta7twitch</a></p>
-    </div>
+    </section>
 
-    <div class="mods-info" id="mods">
+    <section id="mods">
         <h2>Mods/Trial Mods:</h2>
         <p>Our mods and trial mods are here to help make the server a better place. utcsun, yadisdagoat, mr_pasta, slemthepropog, k0n1ngf1l1p, history333, dragonpro748</p>
-    </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 Servers. All rights reserved.</p>
@@ -160,38 +145,20 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const navLinks = document.querySelectorAll('nav ul li a');
-
-        navLinks.forEach(link => {
-          link.addEventListener('click', function(event) {
+        // Smooth scrolling behavior
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+          anchor.addEventListener('click', function(event) {
             event.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-            
-            // Hide all sections and remove 'show' class
-            document.querySelectorAll('.description, .owner-info, .mods-info').forEach(section => {
-              section.classList.remove('show');
-            });
-            
-            // Show the target section
             if (targetElement) {
-              targetElement.classList.add('show');
               window.scrollTo({
-                top: targetElement.offsetTop - 60, // Adjust for fixed header if needed
+                top: targetElement.offsetTop - 60, // Adjust if needed
                 behavior: 'smooth'
               });
             }
           });
         });
-
-        // Automatically show sections based on the URL hash
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-          const targetElement = document.getElementById(hash);
-          if (targetElement) {
-            targetElement.classList.add('show');
-          }
-        }
       });
     </script>
 </body>
