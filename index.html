@@ -17,7 +17,6 @@
         margin: 0;
         padding: 0;
         display: flex;
-        flex-direction: row;
         overflow-x: hidden; /* Prevent horizontal scrolling */
       }
 
@@ -32,6 +31,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px; /* Space between buttons */
+        z-index: 1;
       }
 
       .sidebar-button {
@@ -68,22 +68,9 @@
 
       .main-content {
         margin-left: 270px; /* Space for the sidebar */
-        flex: 1;
         padding: 20px;
-      }
-
-      .section-content {
-        display: none;
-        background: linear-gradient(135deg, #2196f3, #03a9f4); /* Gradient background for sections */
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: max-height 0.3s ease, opacity 0.3s ease;
-      }
-
-      .section-content.open {
-        display: block;
+        width: calc(100% - 270px); /* Full width minus sidebar */
+        box-sizing: border-box;
       }
 
       .hero {
@@ -105,32 +92,34 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow for better readability */
       }
 
-      section {
-        background-color: #4caf50; /* Bright green background for the section */
-        border-radius: 10px; /* Rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        margin-bottom: 20px;
+      .section-content {
+        display: none;
+        background: linear-gradient(135deg, #2196f3, #03a9f4); /* Gradient background for sections */
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        left: 270px; /* Position to the right of the sidebar */
+        top: 10px; /* Start from the top */
+        width: calc(100% - 270px); /* Full width minus sidebar */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
       }
 
-      section h2 {
-        color: #ffffff; /* White text color for subheading */
-        margin: 0;
-        font-size: 2em;
+      .section-content.open {
+        display: block;
+        max-height: 500px; /* Adjust as needed */
+        opacity: 1;
       }
 
-      section p {
-        color: #ffffff; /* White text color */
-        font-size: 16px;
-      }
-
-      section a {
-        color: #ffeb3b; /* Bright yellow color for links */
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      section a:hover {
-        text-decoration: underline; /* Underline on hover */
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
       }
     </style>
 </head>
