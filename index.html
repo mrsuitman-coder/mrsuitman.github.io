@@ -73,6 +73,10 @@
         border-radius: 10px; /* Rounded corners */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
         margin-bottom: 20px;
+        max-width: 800px; /* Limit width */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
       }
 
       section h2 {
@@ -117,29 +121,11 @@
         background: linear-gradient(135deg, #e91e63, #ff5722); /* Inverted gradient on hover */
       }
 
-      .arrow-down {
-        display: inline-block;
-        margin-left: 10px;
-        border: solid #ffffff;
-        border-width: 0 3px 3px 0;
-        padding: 3px;
-        transform: rotate(45deg);
-        transition: transform 0.3s ease;
-      }
-
-      .arrow-down.open {
-        transform: rotate(-135deg);
-      }
-
-      .description, .owner-info, .mods-info {
-        background: linear-gradient(135deg, #2196f3, #03a9f4); /* Gradient background for sections */
-        padding: 20px;
-        margin: 0 auto;
-        max-width: 800px;
-        text-align: left;
-        display: none;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      footer {
+        background: #333; /* Dark background for footer */
+        padding: 10px;
+        color: #fff;
+        text-align: center;
       }
     </style>
 </head>
@@ -163,46 +149,23 @@
         <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
     </section>
 
-    <button class="description-button" onclick="toggleSection('description')">Description <span class="arrow-down" id="description-arrow"></span></button>
-    <div class="description" id="description">
+    <section id="description">
         <h2>Description:</h2>
         <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
-    </div>
+    </section>
 
-    <button class="owner-button" onclick="toggleSection('owner-info')">The Owner <span class="arrow-down" id="owner-arrow"></span></button>
-    <div class="owner-info" id="owner-info">
+    <section id="owner">
         <h2>The Owner:</h2>
         <p>Meet the owner of the server. Delta7 is passionate about creating a great community. His Reddit: <a href="https://www.reddit.com/user/delta7r/">https://www.reddit.com/user/delta7r/</a>, Twitter: <a href="https://x.com/delta7tw?mx=2">https://x.com/delta7tw?mx=2</a>, YouTube: <a href="https://www.youtube.com/@delttaa7">https://www.youtube.com/@delttaa7</a>, Twitch: <a href="https://www.twitch.tv/delta7twitch">https://www.twitch.tv/delta7twitch</a></p>
-    </div>
+    </section>
 
-    <button class="mods-button" onclick="toggleSection('mods-info')">Mods/Trial Mods <span class="arrow-down" id="mods-arrow"></span></button>
-    <div class="mods-info" id="mods-info">
+    <section id="mods">
         <h2>Mods/Trial Mods:</h2>
         <p>Our mods and trial mods are here to help make the server a better place. utcsun, yadisdagoat, mr_pasta, slemthepropog, k0n1ngf1l1p, history333, dragonpro748</p>
-    </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 Servers. All rights reserved.</p>
     </footer>
-
-    <script>
-      function toggleSection(id) {
-        const sections = document.querySelectorAll('.description, .owner-info, .mods-info');
-        const arrows = document.querySelectorAll('.arrow-down');
-
-        sections.forEach(section => {
-          if (section.id === id) {
-            const isCurrentlyVisible = section.style.display === 'block';
-            section.style.display = isCurrentlyVisible ? 'none' : 'block';
-            const arrow = document.getElementById(${id}-arrow);
-            arrow.classList.toggle('open', !isCurrentlyVisible);
-          } else {
-            section.style.display = 'none';
-            const arrow = document.getElementById(${section.id}-arrow);
-            if (arrow) arrow.classList.remove('open');
-          }
-        });
-      }
-    </script>
 </body>
 </html>
