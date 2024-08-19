@@ -161,22 +161,29 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const navLinks = document.querySelectorAll('nav ul li a');
-        
+
         navLinks.forEach(link => {
           link.addEventListener('click', function(event) {
             event.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             
+            // Hide all sections and remove 'show' class
+            document.querySelectorAll('.description, .owner-info, .mods-info').forEach(section => {
+              section.classList.remove('show');
+            });
+            
+            // Show the target section
             if (targetElement) {
+              targetElement.classList.add('show');
               window.scrollTo({
-                top: targetElement.offsetTop,
+                top: targetElement.offsetTop - 60, // Adjust for fixed header if needed
                 behavior: 'smooth'
               });
             }
           });
         });
-        
+
         // Automatically show sections based on the URL hash
         const hash = window.location.hash.substring(1);
         if (hash) {
