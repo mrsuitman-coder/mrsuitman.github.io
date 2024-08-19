@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -96,41 +96,6 @@
         text-decoration: underline; /* Underline on hover */
       }
 
-      .cta-button, .description-button, .owner-button, .mods-button {
-        cursor: pointer;
-        background: linear-gradient(135deg, #ff5722, #e91e63); /* Gradient background for buttons */
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 18px;
-        border-radius: 5px;
-        margin-top: 10px;
-        display: inline-flex;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-        text-transform: uppercase;
-        transition: background 0.3s ease; /* Smooth transition for hover effect */
-      }
-
-      .cta-button:hover, .description-button:hover, .owner-button:hover, .mods-button:hover {
-        background: linear-gradient(135deg, #e91e63, #ff5722); /* Inverted gradient on hover */
-      }
-
-      .arrow-down {
-        display: inline-block;
-        margin-left: 10px;
-        border: solid #ffffff;
-        border-width: 0 3px 3px 0;
-        padding: 3px;
-        transform: rotate(45deg);
-        transition: transform 0.3s ease;
-      }
-
-      .arrow-down.open {
-        transform: rotate(-135deg);
-      }
-
       .description, .owner-info, .mods-info {
         background: linear-gradient(135deg, #2196f3, #03a9f4); /* Gradient background for sections */
         padding: 20px;
@@ -140,6 +105,17 @@
         display: none;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .description.show, .owner-info.show, .mods-info.show {
+        display: block;
+      }
+
+      footer {
+        background: #333; /* Dark background for footer */
+        padding: 10px;
+        color: #fff;
+        text-align: center;
       }
     </style>
 </head>
@@ -163,20 +139,17 @@
         <a href="https://discord.gg/kxjqMP5nmm" class="cta-button">Join Us Now!</a>
     </section>
 
-    <button class="description-button" onclick="toggleSection('description')">Description <span class="arrow-down" id="description-arrow"></span></button>
     <div class="description" id="description">
         <h2>Description:</h2>
         <p>What is this server, you may ask? Well, this server is a place where you can hang out, join events and giveaways, and much, much more!</p>
     </div>
 
-    <button class="owner-button" onclick="toggleSection('owner-info')">The Owner <span class="arrow-down" id="owner-arrow"></span></button>
-    <div class="owner-info" id="owner-info">
+    <div class="owner-info" id="owner">
         <h2>The Owner:</h2>
         <p>Meet the owner of the server. Delta7 is passionate about creating a great community. His Reddit: <a href="https://www.reddit.com/user/delta7r/">https://www.reddit.com/user/delta7r/</a>, Twitter: <a href="https://x.com/delta7tw?mx=2">https://x.com/delta7tw?mx=2</a>, YouTube: <a href="https://www.youtube.com/@delttaa7">https://www.youtube.com/@delttaa7</a>, Twitch: <a href="https://www.twitch.tv/delta7twitch">https://www.twitch.tv/delta7twitch</a></p>
     </div>
 
-    <button class="mods-button" onclick="toggleSection('mods-info')">Mods/Trial Mods <span class="arrow-down" id="mods-arrow"></span></button>
-    <div class="mods-info" id="mods-info">
+    <div class="mods-info" id="mods">
         <h2>Mods/Trial Mods:</h2>
         <p>Our mods and trial mods are here to help make the server a better place. utcsun, yadisdagoat, mr_pasta, slemthepropog, k0n1ngf1l1p, history333, dragonpro748</p>
     </div>
@@ -186,23 +159,33 @@
     </footer>
 
     <script>
-      function toggleSection(id) {
-        const sections = document.querySelectorAll('.description, .owner-info, .mods-info');
-        const arrows = document.querySelectorAll('.arrow-down');
-
-        sections.forEach(section => {
-          if (section.id === id) {
-            const isCurrentlyVisible = section.style.display === 'block';
-            section.style.display = isCurrentlyVisible ? 'none' : 'block';
-            const arrow = document.getElementById(${id}-arrow);
-            arrow.classList.toggle('open', !isCurrentlyVisible);
-          } else {
-            section.style.display = 'none';
-            const arrow = document.getElementById(${section.id}-arrow);
-            if (arrow) arrow.classList.remove('open');
-          }
+      document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('nav ul li a');
+        
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          });
         });
-      }
+        
+        // Automatically show sections based on the URL hash
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          const targetElement = document.getElementById(hash);
+          if (targetElement) {
+            targetElement.classList.add('show');
+          }
+        }
+      });
     </script>
 </body>
 </html>
